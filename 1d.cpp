@@ -19,11 +19,11 @@ float iterate_1d(vector<float> &trajectory_points,
         
         trajectory_points.push_back(Z);
         
-        if (sqrtf(Z*Z) >= threshold)
+        if (fabsf(Z) >= threshold)
             break;
     }
     
-    return sqrtf(Z*Z);
+    return fabsf(Z);
 }
 
 int main(void)
