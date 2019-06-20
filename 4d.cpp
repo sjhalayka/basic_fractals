@@ -15,7 +15,7 @@ public:
         return x*x + y*y + z*z + w*w;
     }
     
-    inline float length(void) const
+    inline float magnitude(void) const
     {
         return sqrtf(self_dot());
     }
@@ -75,17 +75,17 @@ void get_trajectory_properties(
     else if (points.size() == 1)
     {
         length = displacement = 0.0f;
-        magnitude = points[0].length();
+        magnitude = points[0].magnitude();
         return;
     }
     
     length = 0.0f;
     
     for (size_t i = 0; i < points.size() - 1; i++)
-        length += (points[i + 1] - points[i]).length();
+        length += (points[i + 1] - points[i]).magnitude();
     
-    displacement = (points[points.size() - 1] - points[0]).length();
-    magnitude = points[points.size() - 1].length();
+    displacement = (points[points.size() - 1] - points[0]).magnitude();
+    magnitude = points[points.size() - 1].magnitude();
 }
 
 
@@ -105,11 +105,11 @@ float iterate_4d(vector< quaternion > &trajectory_points,
         
         trajectory_points.push_back(Z);
         
-        if (Z.length() >= threshold)
+        if (Z.magnitude) >= threshold)
             break;
     }
     
-    return Z.length();
+    return Z.magnitude();
 }
 
 
