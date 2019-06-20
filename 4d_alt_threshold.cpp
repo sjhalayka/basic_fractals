@@ -182,6 +182,7 @@ void generate_and_save_histogram(const vector<float> &input,
                                  const char *const file_name)
 {
     // Insert OpenCV code here to generate and save a histogram
+    // See: https://github.com/sjhalayka/fractals_histograms
 }
 
 
