@@ -105,7 +105,7 @@ float iterate_4d(vector< quaternion > &trajectory_points,
         
         trajectory_points.push_back(Z);
         
-        if (Z.magnitude) >= threshold)
+        if (Z.magnitude() >= threshold)
             break;
     }
     
