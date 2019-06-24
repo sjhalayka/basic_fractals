@@ -154,9 +154,9 @@ int main(void)
             
             for (size_t y = 0; y < y_res; y++, Z.y += y_step_size)
             {
-                vector<quaternion> points;
+                vector<quaternion> trajectory_points;
                 
-                float magnitude = iterate_4d(points, Z, C, max_iterations, threshold);
+                float magnitude = iterate_4d(trajectory_points, Z, C, max_iterations, threshold);
                 
                 if (magnitude < threshold)
                     cout << '*';
