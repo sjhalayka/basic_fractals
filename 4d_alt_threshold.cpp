@@ -231,15 +231,15 @@ int main(void)
             
             for (size_t y = 0; y < y_res; y++, Z.y += y_step_size)
             {
-                vector<quaternion> points;
+                vector<quaternion> trajectory_points;
                 
-                iterate_4d_length(points, Z, C, max_iterations, threshold);
+                iterate_4d_length(trajectory_points, Z, C, max_iterations, threshold);
                 
                 float length = 0.0f;
                 float displacement = 0.0f;
                 float magnitude = 0.0f;
                 
-                get_trajectory_properties(points,
+                get_trajectory_properties(trajectory_points,
                                           length,
                                           displacement,
                                           magnitude);
