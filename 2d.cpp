@@ -32,12 +32,12 @@ int main(void)
     const float x_grid_max = 1.5;
     const float x_grid_min = -x_grid_max;
     const size_t x_res = 30;
-    const float x_step_size = (x_grid_max - x_grid_min) / (x_res - 1);
+    const complex<float> x_step_size((x_grid_max - x_grid_min) / (x_res - 1), 0);
 
     const float y_grid_max = 1.5;
     const float y_grid_min = -y_grid_max;
     const size_t y_res = 30;
-    const float y_step_size = (y_grid_max - y_grid_min) / (y_res - 1);
+    const complex<float> y_step_size(0, (y_grid_max - y_grid_min) / (y_res - 1));
 
     const complex<float> C(0.2f, 0.5f);
     const unsigned short int max_iterations = 8;
@@ -47,11 +47,11 @@ int main(void)
 
     vector< complex<float> > trajectory_points;
     
-    for (size_t x = 0; x < x_res; x++)
+    for (size_t x = 0; x < x_res; x++, Z += x_step_size)
     {
         Z = complex<float>(Z.real(), y_grid_min);
         
-        for (size_t y = 0; y < y_res; y++)
+        for (size_t y = 0; y < y_res; y++, Z += y_step_size)
         {
             float magnitude = iterate_2d(trajectory_points, Z, C, max_iterations, threshold);
             
@@ -59,11 +59,7 @@ int main(void)
                 cout << '*';
             else
                 cout << '.';
-        
-            Z = complex<float>(Z.real(), Z.imag() + y_step_size);
         }
-        
-        Z = complex<float>(Z.real() + x_step_size, Z.imag());
         
         cout << endl;
     }
